@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloomcart</title>
+    <link rel="icon" href="./images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Modak&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script>
+    <script src="./script.js"></script>
+
+    <link rel="stylesheet" href="track.css" />
+  </head>
+  <body>
+    <h1 class="counter">0</h1>
+    <div class="overlay">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="container">
+      <nav>
+        <div>
+            <img src="./images/bloomhelp.png" alt="">
+          <a href="#">About</a>
+          <a href="#">Track</a>
+          <a href="#">Chat</a>
+          <a href="#">Forum</a>
+          <a href="#"><i class="fa-solid fa-house"></i></a>
+        </div>
+      </nav>
+      <div class="header">
+        <div class="h1">H</div>
+        <div class="h1">E</div>
+        <div class="h1">L</div>
+        <div class="h1">P</div>
+        <div class="h1">.</div>
+      </div>
+      <div class="is-here">IS HERE</div>
+    </div>
+
+    
+
+    <script>
+      function startLoader() {
+        let counterElement = document.querySelector(".counter");
+        let currentValue = 0;
+
+        function updateCounter() {
+          if (currentValue === 100) return;
+          currentValue += Math.floor(Math.random() * 10) + 1;
+          if (currentValue > 100) currentValue = 100;
+          counterElement.textContent = currentValue;
+          let delay = Math.floor(Math.random() * 200) + 50;
+          setTimeout(updateCounter, delay);
+        }
+        updateCounter();
+      }
+      startLoader();
+
+      gsap.to(".counter", { delay: 3.5, opacity: 0, duration: 0.25 });
+      gsap.to(".bar", {
+        delay: 3.5,
+        height: 0,
+        stagger: 0.1,
+        ease: "power4.inOut",
+        duration: 1.5,
+      });
+      gsap.from(".h1", {
+        delay: 4,
+        y: 700,
+        stagger: 0.2,
+        ease: "power4.inOut",
+        duration: 1.5,
+      });
+      gsap.from(".is-here", {
+        delay: 4.5,
+        y: 700,
+        ease: "power4.inOut",
+        duration: 1.5,
+      });
+    </script>
+  </body>
+</html>
