@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .modak-regular {
@@ -9,7 +10,7 @@
 }
 
 :root {
-    --text-color: #2e3133;
+    --text-color: #000000;
     --main-color: #dbb778;
     --second-color: #f0cf95;
     --bg-color: #ffffff;
@@ -30,7 +31,6 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 1em;
-    /* z-index: 999; */
 }
 
 nav div {
@@ -51,6 +51,7 @@ nav div a {
     color: var(--text-color);
     font-family: "Neue Montreal";
     font-size: 20px;
+    z-index: 5 !important;
 }
 
 nav div a:hover {
@@ -87,9 +88,8 @@ nav div a:hover {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 2;
+    z-index: 3;
     display: flex;
-    /* pointer-events: auto; */
 }
 
 .bar {
@@ -105,22 +105,11 @@ nav div a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    z-index: 10000;
+    z-index: 4;
     color: var(--main-color);
     padding: 0.2em 0.4em;
     font-size: 20vw;
-    /* pointer-events: auto; */
 }
-/* .overlay.hidden {
-    opacity: 0;
-    pointer-events: none; /* Allows clicks on nav after hiding */
-    /* transition: opacity 0.5s ease-in-out;
-} */
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-} */
 
 .about-content {
     margin-top: 0px;
@@ -285,6 +274,44 @@ section.website-content {
 
 }
 #chat-button:hover{
+    background-color: var(--main-color);
+	box-shadow: 0 0 10px 2px var(--second-color);
+    cursor: pointer;
+}
+
+.track-container {
+    position: relative;
+    text-align: center;
+    padding: 60px;
+    background-color: var(--main-color);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.track-container:hover {
+    background-color: var(--text-color);
+    transform: scale(1.05);
+    color: #fff;
+}
+
+#track-button {
+	color: var(--bg-color);
+    background-color: #000;
+	border: 2px solid;
+	position: relative;
+    top: 1rem;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	border-radius: 6px;
+	transition: all 0.5s ease;
+	margin-right: 15px;
+	animation: fadeIn 2s ease-in-out;
+    cursor: pointer;
+}
+#track-button:hover{
     background-color: var(--main-color);
 	box-shadow: 0 0 10px 2px var(--second-color);
 }

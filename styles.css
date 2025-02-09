@@ -6,6 +6,7 @@
 	text-decoration: none;
 	list-style: none;
 	scroll-behavior: smooth;
+	/* overflow-x: hidden; */
 	/* outline: 2px solid red; */
 }
 
@@ -21,10 +22,10 @@
 
 html,
 body {
-	overflow-x: hidden;
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	overflow-x: hidden;
 }
 
 body {
@@ -179,7 +180,7 @@ header {
 .about__section {
 	position: relative;
 	width: 100%;
-	margin: 70px;
+	margin: 70px 0 70px 70px;
 	padding-left: 40px;
 }
 

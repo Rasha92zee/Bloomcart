@@ -42,11 +42,11 @@
       <nav>
         <div>
           <img src="./images/bloomhelp.png" alt="" />
-          <a href="#">About</a>
+          <a href="#about">About</a>
           <a href="#">Track</a>
           <a href="#">Chat</a>
           <a href="#">Forum</a>
-          <a href="#"><i class="fa-solid fa-house"></i></a>
+          <a href="/index.html"><i class="fa-solid fa-house"></i></a>
         </div>
       </nav>
       <div class="header">
@@ -73,7 +73,7 @@
       <section class="hero1">
         <h1 id="h1-tag">Bloom Help</h1>
       </section>
-      <section class="info">
+      <section class="info" id="about">
         <div class="header-row"><h1 id="h1-tag">Empower</h1></div>
         <div class="header-row"><h1 id="h1-tag">Support</h1></div>
       </section>
@@ -100,6 +100,14 @@
         <h1 id="h1-tag">Your Safety, Our Priority</h1>
         <button id="chat-button">Chat</button>
       </section>
+    </div>
+    <div class="track-container">
+      <h1>Live Location Tracker</h1>
+      <p>Click the button below to get your current location.</p>
+      <button onclick="getLocation()" id="track-button">
+        Start Navigating
+      </button>
+      <p id="location"></p>
     </div>
 
     <script>
@@ -140,6 +148,43 @@
         ease: "power4.inOut",
         duration: 1.5,
       });
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          document.getElementById("location").innerText =
+            "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        document.getElementById(
+          "location"
+        ).innerHTML = `Latitude: ${lat} <br> Longitude: ${lon}`;
+      }
+
+      function showError(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            document.getElementById("location").innerText =
+              "User denied the request for Geolocation.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            document.getElementById("location").innerText =
+              "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            document.getElementById("location").innerText =
+              "The request to get user location timed out.";
+            break;
+          case error.UNKNOWN_ERROR:
+            document.getElementById("location").innerText =
+              "An unknown error occurred.";
+            break;
+        }
+      }
     </script>
     <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/dist/lenis.min.js"></script>
