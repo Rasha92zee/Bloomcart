@@ -23,7 +23,7 @@ This project isn't just about technology—it's about providing **a safe, access
 
 ## **Tech Stack**  
 - **Frontend:** HTML, CSS, JavaScript  
-- **Libraries:** *(List any libraries used from your code)*  
+- **Libraries:**  
 
 ## **Program Structure**  
 - **Shopping Interface:**  
@@ -39,10 +39,10 @@ This project isn't just about technology—it's about providing **a safe, access
 
 ## **How to Use**  
 1. **Browse BloomCart** like a normal shopping website.  
-2. Add a product to your cart and place an "order."  
+2. Order a Product  
 3. You’ll be **redirected to BloomHelp**, where you can access support services.  
 4. Use the **community, chat, or navigation features** to find the help you need.  
-5. If necessary, click the **emergency exit** to instantly return to the shopping page.  
+5. If necessary, click the **emergency exit** 'the home icon' to instantly return to the shopping page.  
 
 ---
 
