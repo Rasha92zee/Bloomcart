@@ -1,0 +1,6 @@
+.chat-icon i {
+	font-size: 22px;
+	color: var(--text-color);
+	margin-right: 15px;
+	margin-left: 10px;
+}

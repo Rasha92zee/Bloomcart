@@ -1,45 +1,49 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  .modak-regular {
+}
+
+.modak-regular {
     font-family: "Modak", cursive;
 }
+
 :root {
-	--text-color: #2e3133;
-	--main-color: #dbb778;
-	--second-color: #f0cf95;
-	--bg-color: #ffffff;
-} 
-  
-  html,
-  body {
+    --text-color: #2e3133;
+    --main-color: #dbb778;
+    --second-color: #f0cf95;
+    --bg-color: #ffffff;
+}
+
+html,
+body {
     width: 100vw;
     height: auto;
     background: white;
     overflow-y: auto;
-  }
-  
-  .nav {
+}
+
+.nav {
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: space-around;
     padding: 1em;
-  }
-  nav div {
+    /* z-index: 999; */
+}
+
+nav div {
     display: flex;
     padding: 1em;
     gap: 10em;
-  }
-  
-  nav img{
-    width: 120px;
-  }
+}
 
-  nav div a {
+nav img {
+    width: 120px;
+}
+
+nav div a {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -47,51 +51,54 @@
     color: var(--text-color);
     font-family: "Neue Montreal";
     font-size: 20px;
-  }
-  nav div a:hover {
-    cursor: pointer;
-	border-bottom: 2px solid var(--main-color);
-	color: var(--main-color);
-	transition: all 0.3s ease-in-out;
 }
-  
-  .header {
+
+nav div a:hover {
+    cursor: pointer;
+    border-bottom: 2px solid var(--main-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.header {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 2em;
-  }
+}
 
-  .header .h1 {
+.header .h1 {
     position: relative;
-    font-family: "Modak", cursive;    
+    font-family: "Modak", cursive;
     font-size: 32vw;
     color: var(--main-color);
     line-height: 1.125;
-  }
-  .is-here {
+}
+
+.is-here {
     font-family: "Modak", cursive;
     font-size: 10vw;
     text-align: center;
     color: var(--main-color);
     margin-top: -100px;
-  }
-  
-  .overlay {
+}
+
+.overlay {
     position: fixed;
     width: 100vw;
     height: 100vh;
     z-index: 2;
     display: flex;
-  }
-  
-  .bar {
+    /* pointer-events: auto; */
+}
+
+.bar {
     width: 10vw;
     height: 105vh;
     background: black;
-  }
-  
-  .counter {
+}
+
+.counter {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -102,14 +109,182 @@
     color: var(--main-color);
     padding: 0.2em 0.4em;
     font-size: 20vw;
-  }
+    /* pointer-events: auto; */
+}
+/* .overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Allows clicks on nav after hiding */
+    /* transition: opacity 0.5s ease-in-out;
+} */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+} */
 
-  .about-content {
+.about-content {
     margin-top: 0px;
     padding: 2em;
     text-align: center;
     font-family: "Raleway", sans-serif;
     font-size: 1.5em;
     color: #000;
+}
+
+.img1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#h1-tag {
+    text-transform: uppercase;
+    font-size: 200px;
+    font-weight: 400;
+    letter-spacing: -4px;
+}
+
+section.hero1 {
+    width: 100vw;
+    height: 100vh;
+    background: url(./images/hero.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero1 h1{
+    color: white;
+    font-weight: lighter;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+section.info {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    color: #ffffff;
+}
+
+.header-row {
+    width: 100%;
+    height: 40vh;
+    padding: 0 2em;
+}
+
+.header-row:nth-child(1) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+  
+.header-row:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-info {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000;
+    color: #fff;
+}
+.header-info p {
+    padding: 1em;
+    font-family: "PP Editorial Old";
+    font-size: 52px;
+    font-weight: lighter;
   }
   
+.header-images {
+    width: 100%;
+    height: 250px;
+    padding: 1em;
+    display: flex;
+    gap: 1em;  
+}
+  
+img {
+    width: 100%;
+    height: 100%;
+}
+section.pinned {
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    height: 250vh;
+    z-index: 2;
+}
+  
+
+.revealer {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    left: 15%;
+    margin-top: 1200px;
+    width: 120px;
+    height: 120px;
+}
+  
+.revealer .revealer-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(45% 0%, 55% 0%, 55% 100%, 45% 100%); 
+}
+.revealer .revealer-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(90deg);
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(45% 0%, 55% 0%, 55% 100%, 45% 100%); 
+}
+
+section.website-content {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.website-content h1 {
+    font-size: 32px;
+    letter-spacing: 0;
+}
+
+.chatbot-popup{
+    background-color: #fff;
+}
+
+#chat-button {
+	color: var(--bg-color);
+    background-color: #000;
+	border: 2px solid;
+	position: relative;
+	top: -3.5rem;
+	left: 85%;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	border-radius: 6px;
+	transition: all 0.5s ease;
+	margin-right: 15px;
+	animation: fadeIn 2s ease-in-out;
+
+}
+#chat-button:hover{
+    background-color: var(--main-color);
+	box-shadow: 0 0 10px 2px var(--second-color);
+}
