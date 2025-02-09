@@ -3,21 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="/chat.css">
+    <title>Chatbot</title>
+    <style>
+        :root {
+            --text-color: #2e3133;
+            --main-color: #dbb778;
+            --second-color: #f0cf95;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 300px;
+            background-color: var(--main-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-header {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .chat-box {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: var(--second-color);
+        }
+
+        .chat-message {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 8px;
+            max-width: 80%;
+            display: block;
+        }
+
+        .bot-message {
+            background-color: var(--bg-color);
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: var(--text-color);
+            color: white;
+            align-self: flex-end;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: var(--main-color);
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            border: none;
+            background-color: var(--text-color);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #1d1f20;
+        }
+    </style>
 </head>
 <body>
-    <div class="chatbot-popup">
+
+    <div class="chat-container">
+        <div class="chat-header">Chatbot</div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message bot-message">Hello! How can I help you?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") return;
+
+            let chatBox = document.getElementById("chatBox");
+
+            // User message
+            let userMessage = document.createElement("div");
+            userMessage.className = "chat-message user-message";
+            userMessage.textContent = userInput;
+            chatBox.appendChild(userMessage);
+
+            document.getElementById("userInput").value = "";
+
+            setTimeout(() => {
+                let botMessage = document.createElement("div");
+                botMessage.className = "chat-message bot-message";
+                botMessage.textContent = getBotResponse(userInput);
+                chatBox.appendChild(botMessage);
+                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+            }, 500);
+        }
+
+        function getBotResponse(input) {
+            let responses = {
+                "hello": "Hi there! 😊",
+                "how are you": "I'm just a bot, but I'm doing great! How about you?",
+                "what's your name": "I'm a simple chatbot made by you!",
+                "bye": "Goodbye! Have a great day! 👋",
+            };
+
+            let lowerInput = input.toLowerCase();
+            return responses[lowerInput] || "Sorry, I didn't understand that. 🤖";
+        }
+    </script>
+
+</body>
+</html>
+
+    <!-- <div class="chatbot-popup">
         <div class="chat-header">
           <div class="header-info">
             <i class="fa-solid fa-robot" id="chat-icon"></i>
             <h2 class="logo-text">Chatbot</h2>
           </div>
         </div>
-      </div>
-</body>
-</html>
+      </div> -->
+      

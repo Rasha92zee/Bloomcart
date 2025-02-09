@@ -300,7 +300,8 @@ section.website-content {
     background-color: #000;
 	border: 2px solid;
 	position: relative;
-    top: 1rem;
+    top: 1.5rem;
+    bottom: 3rem;
 	padding-left: 40px;
 	padding-right: 40px;
 	padding-top: 14px;

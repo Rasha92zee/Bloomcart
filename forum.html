@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum & Blog</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --text-color: #2e3133;
+            --main-color: #dbb778;
+            --second-color: #f0cf95;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: var(--main-color);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav img {
+            height: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--second-color);
+        }
+
+        /* Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Blog Sections */
+        .blog-section {
+            background-color: var(--second-color);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .blog-content {
+            font-size: 14px;
+            color: #444;
+            text-align: justify;
+        }
+
+        /* Community Forum */
+        .forum-container {
+            background-color: var(--second-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .forum-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .post {
+            background-color: var(--bg-color);
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .user {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .comment {
+            margin-top: 8px;
+            color: #444;
+        }
+
+        .like-btn {
+            margin-top: 10px;
+            background-color: var(--main-color);
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        .like-btn:hover {
+            background-color: var(--text-color);
+            color: white;
+        }
+
+        /* Chat Box */
+        .chat-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--main-color);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .chat-box textarea {
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid var(--text-color);
+            padding: 5px;
+        }
+
+        .chat-box button {
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        /* Anonymous Messages */
+        .anonymous-message {
+            background-color: var(--main-color);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .anonymous-message input {
+            width: 80%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid var(--text-color);
+        }
+
+        .anonymous-message button {
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Chat Section */
+        .chat-container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-header {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--text-color);
+            padding: 10px;
+            border-radius: 8px;
+            background-color: var(--second-color);
+        }
+
+        .message {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: var(--main-color);
+            text-align: right;
+            color: var(--bg-color);
+        }
+
+        .other-message {
+            background-color: var(--second-color);
+            text-align: left;
+        }
+
+        .chat-input {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--text-color);
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            padding: 8px;
+            border: none;
+            background-color: var(--main-color);
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+            color: var(--text-color);
+        }
+
+        .chat-input button:hover {
+            background-color: var(--text-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div>
+          <img src="./images/bloomhelp.png" alt="BloomHelp Logo" />
+          <a href="/track.html">Home</a>
+          <a href="track.html#track">Track</a>
+          <a href="/chat.html">Chat</a>
+          <a href="#">Forum</a>
+          <a href="/index.html"><i class="fa-solid fa-house"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+
+        <!-- Left Blog Section -->
+        <div class="blog-section"> 
+            <div class="blog-header">Breaking Free: Maria's Story</div>
+            <div class="blog-content">
+                Maria was trapped in an abusive marriage for years, but she found the courage to leave. Today, she runs a support group helping others find their way to safety.
+            </div> <br> <br>
+            <div class="blog-header">Silent Scars: Ayesha’s Journey to Healing</div>
+            <div class="blog-content">
+                Ayesha was only 19 when the person she trusted the most turned into the 
+                source of her pain. For years, she endured the silent scars.
+             She believed staying was her only choice. Until
+                  one night, she looked into the mirror and saw someone she no longer 
+                  recognized. With nothing but courage and a small backpack, she walked away, stepping into the unknown.
+
+                Today, Ayesha is a counselor, helping other survivors rebuild their lives. She reminds them that healing isn’t about forgetting—it’s about finding the strength to move forward, one step at a time.
+            </div> <br>
+        </div>
+
+        <!-- Community Forum -->
+        <div class="forum-container">
+            <div class="forum-header">Community Forum</div>
+
+            <div class="post">
+                <div class="user">👤 Sarah Johnson</div>
+                <div class="comment">"This platform really helped me! Thank you!"</div>
+                <button class="like-btn" onclick="likePost(this)">Like ❤️ <span class="likes-count">12</span></button>
+            </div>
+
+            <div class="post">
+                <div class="user">👤 Michael Lee</div>
+                <div class="comment">"I love how easy it is to use. The chat feature is awesome!"</div>
+                <button class="like-btn" onclick="likePost(this)">Like ❤️ <span class="likes-count">8</span></button>
+            </div>
+
+            <div class="post">
+                <div class="user">👤 Alex Carter</div>
+                <div class="comment">"I was in a dark place, but reading these stories gave me hope."</div>
+                <button class="like-btn" onclick="likePost(this)">Like ❤️ <span class="likes-count">8</span></button>
+            </div>
+        </div>
+
+        <!-- Right Blog Section -->
+        <div class="blog-section">
+            <div class="blog-header">Fighting for Change: A Survivor's Perspective</div>
+            <div class="blog-content">
+                Domestic violence is not just physical. It includes emotional and psychological abuse. Survivors like John are now advocates, teaching young men about respect and kindness.
+            </div> <br> <br>
+            <div class="blog-content">
+               <div class="blog-header">My Story</div>
+            <div class="blog-content">
+                I spent years walking on eggshells, afraid of the next outburst. One night, I finally chose myself and 
+                walked away with nothing but hope. The journey was terrifying, but freedom felt like breathing after drowning. Now, I help others find their strength to leave. No one deserves to live in fear."            </div>
+            </div>
+        </div>
+
+    </div>
+<!-- chat -->
+    <div class="chat-container">
+        <div class="chat-header">Live Chat</div>
+        <div class="messages" id="messages"></div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <!-- Anonymous Messages -->
+    <div class="anonymous-message">
+        <input type="text" id="anonMessage" placeholder="Send an anonymous message">
+        <button onclick="sendAnon()">Send</button>
+    </div>
+
+    <script>
+        function likePost(button) {
+            let likesCount = button.querySelector(".likes-count");
+            likesCount.innerText = parseInt(likesCount.innerText) + 1;
+        }
+
+        function sendAnon() {
+            alert("Your message has been sent anonymously!");
+            document.getElementById("anonMessage").value = "";
+        }
+    </script>
+
+</body>
+</html>
